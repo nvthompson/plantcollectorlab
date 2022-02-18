@@ -7,11 +7,20 @@ WATER = (
     ('N', 'Night')
 )
 
+class Container(models.Model):
+    type = models.CharField(max_length=50)
+    color = models.CharField(max_length=20)
+
+    def get_absolute_url(self):
+        return reverse('containers_detail', kwargs={'pk': self.id})
+    
+
 class Plant(models.Model):
     name = models.CharField(max_length=50)
     type = models.CharField(max_length=50)
     color = models.CharField(max_length=50)
     description = models.CharField(max_length=250)
+    containers = models.ManyToManyField(Container)
     
     def __str__(self):
         return self.name
