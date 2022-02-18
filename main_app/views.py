@@ -30,6 +30,7 @@ def plants_detail(request, plant_id):
     plant = Plant.objects.get(id=plant_id)
     return render(request, 'plants/detail.html', { 'plant': plant })
 
-# class PlantCreate(CreateView):
-#     model = Plant
-#     fields = '__all__'
+class PlantCreate(CreateView):
+    model = Plant
+    fields = ('name', 'type', 'color', 'description')
+
