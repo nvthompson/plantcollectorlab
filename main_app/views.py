@@ -1,4 +1,6 @@
 from django.shortcuts import render, redirect
+from django.views.generic import ListView
+from django.views.generic.detail import DetailView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from .models import Plant, Container
 from .forms import WateringForm
@@ -48,3 +50,23 @@ class PlantUpdate(UpdateView):
 class PlantDelete(DeleteView):
   model = Plant
   success_url = '/plants/'
+
+class ContainerCreate(CreateView):
+    model = Container
+    fields = ('type', 'color')
+
+class ContainerUpdate(UpdateView):
+    model = Container
+    fields = ('type', 'color')
+
+class ContainerDelete(DeleteView):
+    model = Container
+    success_url = '/containers/'
+
+class ContainerDetail(DetailView):
+    model = Container
+    template_name = 'containers/detail.html'
+
+class ContainerList(ListView):
+    model = Container
+    template_name = 'containers/index.html'

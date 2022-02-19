@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h1>Container Details</h1>
+
+
+<div class="card">
+    <a href="{% url 'containers_detail' container.id %}">
+        <div class="card-content">
+            <span class="card-title">A <span class="{{ container.color.lower }}-text">{{ container.color }}</span> {{ container.type }}</span>
+        </div>
+        <div class="card-action">
+            <a href="{% url 'containers_update' container.id %}">Edit</a>
+            <a href="{% url 'containers_delete' container.id %}">Delete</a>
+        </div>
+    </a>
+</div>
+
+{% endblock %}
